@@ -12,7 +12,7 @@ class mixture_density_network(network.model_base):
     The means and variances may also be outputs
     """
     def __init__(self, n_components=1, input_dependent=False,
-            r_mag_W= 0., n_outputs=1, **kwargs):
+            r_mag_W= 0., **kwargs):
         """initialize a network with normalizing flows.
 
         Args:

@@ -12,8 +12,8 @@ class input_noise_network(network.model_base):
         """initialize a network with input noise
 
         """
-        ## for 2d outputs
-        n_outputs =  2
+        ## for 1d outputs
+        n_outputs =  1
 
         network.model_base.__init__(self, n_outputs=n_outputs, **kwargs)
 
@@ -45,9 +45,8 @@ class input_noise_network(network.model_base):
         self.params.append(sigma)
         self.all_params.append(sigma)
         dist = tf.contrib.distributions.MultivariateNormalDiag(
-                loc=np.zeros(2, dtype=np.float32),
-                scale_diag=sigma*np.ones(2, dtype=np.float32)
-                #scale_diag=np.ones(2, dtype=np.float32)
+                loc=np.zeros(1, dtype=np.float32),
+                scale_diag=sigma*np.ones(1, dtype=np.float32)
                 )
         # Calculate the negative log likelihood
         nlog_ls = -(dist.log_prob(errors) - tf.reduce_sum(tf.log(self.y_std)))
